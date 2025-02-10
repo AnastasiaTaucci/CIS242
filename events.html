@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flying Disc Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/event-form.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>The Flying Disc Hub</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="courses.html">Local Courses</a>
+            <a href="events.html" id="currentpage">Events</a>
+            <a href="tips.html">Tips</a>
+            <a href="web_security.html">Web Security</a>
+        </nav>
+    </header>
+    
+    <main>
+        <section>
+            <h2>Upcoming Events</h2>
+            <table>
+                <tr>
+                  <th>Event</th>
+                  <th>Date</th>
+                  <th>Location</th>
+                </tr>
+                <tr>
+                  <td>Parmageddon Doubles II</td>
+                  <td>January 25, 2025</td>
+                  <td>Kayak Point Disc Golf Resort in Stanwood, WA</td>
+                </tr>
+                <tr>
+                  <td>March Badness Doubles</td>
+                  <td>March 1, 2025</td>
+                  <td>Skyline Golf Course in Cathlamet, WA</td>
+                </tr>
+                <tr>
+                    <td>Mossy Roc Ice Bowl</td>
+                    <td>March 9, 2025</td>
+                    <td>Mossy Roc in Sudden Valley, WA</td>
+                </tr>
+              </table>
+        </section>
+        <section class="registration">
+            <h2>Register for an Event</h2>
+            <p>Sign up for an upcoming disc golf event by filling out the form below.</p>
+            <form id="event-form">
+                
+                <label for="first-name">First Name:</label>
+                <input type="text" id="first-name" required>
+
+                <label for="last-name">Last Name:</label>
+                <input type="text" id="last-name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+        
+                <!-- Dropdown List -->
+                <label for="event">Selecst an Event:</label>
+                <select id="event" required>
+                    <option value="" >-- Choose an Event --</option>
+                    <option>Parmageddon Doubles II</option>
+                    <option>March Badness Doubles</option>
+                    <option>Mossy Roc Ice Bowl</option>
+                </select>
+        
+                <!-- Buttons -->
+                <fieldset>
+                    <legend>Skill Level:</legend>
+                    <div class="radio-container">
+                        
+                        <div>
+                            <input type="radio" id="beginner" name="skill" value="beginner" required>
+                            <label for="beginner">Beginner</label>
+                        </div>
+                        
+                        <div>
+                            <input type="radio" id="intermediate" name="skill" value="intermediate">
+                            <label for="intermediate">Intermediate</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="advanced" name="skill" value="advanced">
+                            <label for="advanced">Advanced</label>   
+                        </div>                    
+                    </div> 
+                </fieldset>
+
+                <!-- Additional Preferences -->
+                <fieldset>
+                    <legend>Select your Interests: </legend>
+                    <div class="checkbox-container">
+                        <div>
+                            <input type="checkbox" id="learn-techniques" value="Lerning New Techniques">
+                            <label for="learn-techniques">Learning New Techniquies</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="meet-players" value="Meeting Other Players">
+                            <label for="meet-players">Meeting Other Players</label> 
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="compete" value="Competing in Tournaments">
+                            <label for="compete">Competing in Tournaments</label>
+                        </div>
+                    
+                        <div>
+                            <input type="checkbox" id="casual-play" value="Casual Play">
+                            <label for="casual-play">Casual Play</label>
+                        </div>
+                    
+                        <div>
+                            <input type="checkbox" id="gear-info" value="Getting Gear Recommendations">
+                            <label for="gear-info">Getting Gear Recommendations</label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Display selected interests -->
+                <p><strong>Your Selections: </strong><span id="display-interest">None</span></p>
+        
+                <!-- Text Area -->
+                <label for="comments">Additional Comments (Optional):</label>
+                <textarea id="comments" rows="4"></textarea>
+        
+                <!-- Checkbox -->
+                <input type="checkbox" id="terms" required>
+                <label for="terms">I agree to the event terms and conditions.</label>
+       
+                <!-- Submit Button -->
+                <button type="submit">Register</button>
+
+            </form>
+        
+            <p id="form-feedback"></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 The Flying Disc Hub</p>
+    </footer>
+
+</body>
+</html>

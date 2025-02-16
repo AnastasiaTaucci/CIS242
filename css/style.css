@@ -89,16 +89,16 @@ footer {
 
 /* home page */
 
-#about-disk-golf {
+#about-disc-golf {
     display: flex;
     justify-content: space-around;  
 }
 
-#about-disk-golf p {
+#about-disc-golf p {
     width: 50%;
 }
 
-#about-disk-golf img {
+#about-disc-golf img {
     width: 30%;
     height: auto;
     border-radius: 10px;
@@ -319,7 +319,7 @@ form p {
 
 #form-feedback {
     margin-top: 15px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: #228B22;
     background-color: #f7f7f7;
     border-radius: 10px;

@@ -1,15 +1,67 @@
+"use strict";
+
+let eventTableBody = document.getElementById("event-table-body");
+
 let form = document.getElementById('event-form');
 let feedback = document.getElementById("form-feedback");
+let eventDropdown = document.getElementById("event");
 let checkboxes = document.querySelectorAll("fieldset input[type='checkbox']");
 let displayInterests = document.getElementById("display-interest");
 
 let selectedInterests = [];
 
+// storing event data
+let eventData = [
+    {name: "Parmageddon Doubles II", date: "January 25, 2025", location: "Kayak Point Disc Golf Resort" },
+    {name: "March Badness Doubles", date: "March 1, 2025", location: "Skyline Golf Course" },
+    {name: "Mossy Roc Ice Bowl", date: "March 9, 2025", location: "Mossy Roc in Sudden Valley" }
+];
 
+// creating instances of event
+let events = [];
+eventData.forEach(event => {
+    events.push(new Event(event.name, event.date, event.location));
+});
+
+
+// populating events table
+function populateTable() {
+    events.forEach(event => {
+        let row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${event.name}</td>
+            <td>${event.date}</td>
+            <td>${event.location}</td>
+        `;
+
+        eventTableBody.appendChild(row);
+    })
+}
+
+window.addEventListener("load", populateTable);
+
+// populating dropdown for event selection
+function populateDropdown() {
+    events.forEach(event => {
+        let option = document.createElement("option");
+        option.value = event.name;
+        option.textContent = event.name;
+        eventDropdown.appendChild(option);
+    })
+}
+
+window.addEventListener("load", populateDropdown);
+
+
+
+// email validation 
 let email = document.getElementById('email');
 email.addEventListener('invalid', (e) => {
     validateEmail();
 })
+
+
 
 
 form.addEventListener('submit', (e) => {
@@ -18,16 +70,28 @@ form.addEventListener('submit', (e) => {
     validateEmail();
     
     let nameElement = document.getElementById("first-name");
-    let eventElement = document.getElementById("event");
+    const name = nameElement.value.trim();
+    
 
-    const name = nameElement.value;
-    const eventSelection = eventElement.options[eventElement.selectedIndex].text;
+    let selectedEventName = eventDropdown.value;
 
-    feedback.textContent = `Thank you, ${name}! You have successfully registered for the ${eventSelection} event.`;
+    let selectedEvent = events.find(event => {
+        return event.name === selectedEventName;
+    })
+
+
+    //register participants
+    let registrationMessage = selectedEvent ? selectedEvent.registerParticipant(name) : "Event not found";
+    
+    feedback.innerHTML = `${registrationMessage} <br><br> ${selectedEvent.getDetails()}`;
+
+    form.reset();
 });
 
 
-// validate email
+
+
+// validate email function
 
 function validateEmail() {
     if (email.validity.valueMissing) {
@@ -43,6 +107,10 @@ function validateEmail() {
 function checkEmail(emailToCheck) {
     return /^[\w.-]+@([\w-]+\.)+[\w-]{2,}$/m.test(emailToCheck);
 }
+
+
+
+// interests option
 
 // add eventlistener to every checkbox
 checkboxes.forEach((checkbox) => {

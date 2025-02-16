@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flying Disc Hub</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/objects.js" defer></script>
     <script src="js/event-form.js" defer></script>
 </head>
 <body>
@@ -23,26 +24,14 @@
         <section>
             <h2>Upcoming Events</h2>
             <table>
-                <tr>
-                  <th>Event</th>
-                  <th>Date</th>
-                  <th>Location</th>
-                </tr>
-                <tr>
-                  <td>Parmageddon Doubles II</td>
-                  <td>January 25, 2025</td>
-                  <td>Kayak Point Disc Golf Resort in Stanwood, WA</td>
-                </tr>
-                <tr>
-                  <td>March Badness Doubles</td>
-                  <td>March 1, 2025</td>
-                  <td>Skyline Golf Course in Cathlamet, WA</td>
-                </tr>
-                <tr>
-                    <td>Mossy Roc Ice Bowl</td>
-                    <td>March 9, 2025</td>
-                    <td>Mossy Roc in Sudden Valley, WA</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Date</th>
+                        <th>Location</th>
+                    </tr>  
+                </thead>   
+                <tbody id="event-table-body"></tbody>
               </table>
         </section>
         <section class="registration">
@@ -60,12 +49,9 @@
                 <input type="email" id="email" required>
         
                 <!-- Dropdown List -->
-                <label for="event">Selecst an Event:</label>
+                <label for="event">Select an Event:</label>
                 <select id="event" required>
                     <option value="" >-- Choose an Event --</option>
-                    <option>Parmageddon Doubles II</option>
-                    <option>March Badness Doubles</option>
-                    <option>Mossy Roc Ice Bowl</option>
                 </select>
         
                 <!-- Buttons -->

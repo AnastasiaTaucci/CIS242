@@ -159,10 +159,20 @@ th {
     background: #006400;
 }
 
-#error {
-    margin-top: 20px;
-    color: #d9534f;
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
+
+.error-msg {
+    color: red;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+
 
 /* web_security page */
 
@@ -325,6 +335,46 @@ form p {
     border-radius: 10px;
 }
 
+/* map section on the security page */
+#location-button {
+    display: flex;
+    margin-left: 60px;
+}
 
+#location-info {
+    font-size: 1rem;
+}
+
+#get-location {
+    background-color: #228B22;  /* Green color to match your theme */
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    margin: 10px 0;
+    display: inline-block;
+}
+
+#get-location:hover {
+    background-color: #176517;  /* Darker green for hover effect */
+    transform: scale(1.05);  /* Slightly enlarges the button */
+}
+
+#get-location:active {
+    transform: scale(0.98);  /* Shrinks slightly when clicked */
+}
+
+#map {
+    width: 70%;
+    height: 500px;
+    margin: 15px 60px;
+    border-radius: 10px;
+    border: 2px solid #228B22;
+}
 
 

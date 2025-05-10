@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flying Disc Hub</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAA1LZCsg7qvRsztcPkKP0t2AMaKgRfN_4&callback=initMap"></script>
     <script src="js/web_security.js" defer></script>
 </head>
 <body>
@@ -12,7 +13,7 @@
         <h1>The Flying Disc Hub</h1>
         <nav>
             <a href="index.html">Home</a>
-            <a href="courses.html">Local Courses</a>
+            <a href="courses.html">Courses</a>
             <a href="events.html">Events</a>
             <a href="tips.html">Tips</a>
             <a href="web_security.html" id="currentpage">Web Security</a>
@@ -38,7 +39,18 @@
             <p>Let’s see what your device has to say — here are just a few examples:</p>
             <ul class="device-info"></ul>
         </section>
-
+        <section>
+            <h2>Your Location</h2>
+            <p id="location-intro">
+                Ever wondered where you are right now? 🗺️ Click the button below, and we’ll pinpoint your location on the map!  
+                Don’t worry, we’re not tracking you — just helping you find your way, just like a well-thrown disc in a game of disc golf! 🥏
+            </p>
+            <div id="location-button">
+                <button id="get-location">Show My Location</button> 
+                <p id="location-info">Click the button to see your location.</p>
+            </div>
+            <div id="map"></div>
+        </section>
         <section>
             <h2>Tips for Staying Safe Online</h2>
             <ul class="tips">

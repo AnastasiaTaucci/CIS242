@@ -1,5 +1,8 @@
 "use strict";
 
+let locationInfo = document.getElementById("location-info");
+let mapDisplay = document.getElementById("map");
+
 window.addEventListener("load", DeviceInfo);
 
 //device data
@@ -21,27 +24,54 @@ function DeviceInfo() {
         infoDisplayed.appendChild(infoDisplayedItem);
     })
 
-    try {
-        if (!navigator.geolocation) throw "<strong>Location: </strong> Your browser doesn’t support geolocation. Maybe try another one?";
+    initMap();
+}
 
-        function success(pos) {
-            let locationItem = document.createElement("li");
-            locationItem.innerHTML = "<strong>Location: </strong> You’re at Latitude  " + pos.coords.latitude + ", Longtitude " + pos.coords.longitude + ". Pretty cool, huh?";
-            infoDisplayed.appendChild(locationItem);
+// map section
+
+//get user location
+document.getElementById("get-location").addEventListener("click", function() {
+    navigator.geolocation.getCurrentPosition(locationSuccess, locationFail);
+
+    function locationSuccess(position) {
+        let lat = position.coords.latitude;
+        let lon = position.coords.longitude;
+        let alt = position.coords.altitude;
+        let myPosition = {lat: lat, lng: lon};
+
+        let mapOpt = {
+            zoom: 11,
+            center: myPosition
         }
+        
+        myMap(mapOpt, myPosition);
 
-        function restricted(err) {
-            let locationRestricted = document.createElement("li");
-            locationRestricted.innerHTML = "<strong>Location: </strong> Sorry, we couldn’t access your location. Privacy first, right?";
-            infoDisplayed.appendChild(locationRestricted);
+        let locationInfoText = "<strong>Location: </strong> You’re at Latitude  " + lat + ", Longtitude " + lon;
+        if(alt) {
+            locationInfo += ", Altitude " + alt;
         }
-
-        navigator.geolocation.getCurrentPosition(success, restricted);
-
-
-    } catch(error) {
-        let locationNotSupported = document.createElement("li");
-        locationNotSupported.innerHTML = error;
-        infoDisplayed.appendChild(locationNotSupported);
+        locationInfoText += ". Pretty cool, huh?"
+        locationInfo.innerHTML = locationInfoText;        
     }
+
+    function locationFail(error) {
+        locationInfo.textContent = `Unable to get location. Error code: ${error.code}. Reason: ${error.message}.`;
+    }
+
+    
+})
+
+//create map
+function initMap() {
+    new google.maps.Map(mapDisplay, {zoom: 10, center: {lat: 47.6062, lng: -122.3321}});
+}
+
+// creating personalized map based on location
+function myMap(mapOpt, myPoistion) {
+    let myMap = new google.maps.Map(mapDisplay, mapOpt);
+    new google.maps.Marker({
+        position: myPoistion,
+        map: myMap,
+        title: "Your Location"
+    })
 }

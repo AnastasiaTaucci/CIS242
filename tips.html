@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flying Disc Hub</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/main.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/tips.js" defer></script>
 </head>
 <body>
     <header>
         <h1>The Flying Disc Hub</h1>
         <nav>
             <a href="index.html">Home</a>
-            <a href="courses.html">Local Courses</a>
+            <a href="courses.html">Courses</a>
             <a href="events.html">Events</a>
             <a href="tips.html" id="currentpage">Tips</a>
             <a href="web_security.html">Web Security</a>
@@ -23,16 +24,21 @@
         <section>
             <h2>Throw Distance Calculator</h2>
             <form id="distance-calculator">
+
                 <label for="speed">Throw Speed (m/s): </label>
-                <input type="number" id="speed">
+                <div class="input-group">
+                    <input type="number" id="speed">
+                </div>
 
                 <label for="angle"> Throw Angle (degrees): </label>
-                <input type="number" id="angle">
+                <div class="input-group">
+                    <input type="number" id="angle">
+                </div>
 
                 <label for="height">Throw Height (meters):</label>
-                <input type="number" id="height">
-
-                <p id="error"></p>
+                <div class="input-group">
+                    <input type="number" id="height">
+                </div>
 
                 <button type="button" id="calculate">Calculate</button>
             </form>
